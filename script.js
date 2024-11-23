@@ -1,14 +1,15 @@
 const myLibrary = [];
 
-function Book(title, author, page, readInfo) {
-  // the constructor...
+class Book {
+  constructor(title, author, page, readInfo) {
     this.title = title,
     this.author = author,
     this.page = page,
     this.readInfo = readInfo,
-    this.info = function() {
-        return(this.title +' by ' + this.author + ' consisting of ' + this.page + ' pages is ' + this.readInfo);
-    }
+    this.info = function () {
+      return (this.title + ' by ' + this.author + ' consisting of ' + this.page + ' pages is ' + this.readInfo);
+      };
+  }
 }
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '1000', 'read');
 const gameOfThrones = new Book('Game of Thrones', 'George R R Martin', '1300', 'unread');

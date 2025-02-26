@@ -37,32 +37,41 @@ function displayBook(book){
   bookForm.className = 'bookForm';
   
   //make the input elements of the form
+  const label1 = document.createElement("label");
   const title = document.createElement('input');
+  label1.textContent = "Book Name:";
+  label1.setAttribute("for", "title");
   title.className = 'title';
   title.id = 'title';
   title.type = 'text';
   title.placeholder = 'book-name';
-  const label1 = document.createElement("label");
-  label1.textContent = "Book Name:";
-  label1.setAttribute("for", "title");
-  
+  title.setAttribute('required', '');
+  title.setAttribute('minlength', '4');
+  title.setAttribute('pattern', '^[A-Za-z]+$');
+
+  const label2 = document.createElement('label');
   const author = document.createElement('input');
+  label2.textContent = 'Author Name:';
+  label2.setAttribute('for', 'author');
   author.className = 'author';
   author.id = 'author';
   author.type = 'text';
   author.placeholder = 'name-of-author';
-  const label2 = document.createElement('label');
-  label2.textContent = 'Author Name:';
-  label2.setAttribute('for', 'author');
+  author.setAttribute('required', '');
+  author.setAttribute('minlength', '4');
+  author.setAttribute('maxlength', '50');
+  author.setAttribute('pattern', '^[A-Za-z]+$');
   
+  const label3 = document.createElement('label');
   const totalPages = document.createElement('input');
+  label3.textContent = 'Total Pages:';
+  label3.setAttribute('for', 'totalPages');
   totalPages.className = 'totalPages';
   totalPages.id = 'totalPages';
   totalPages.type = 'number';
   totalPages.placeholder = 'no-of-pages';
-  const label3 = document.createElement('label');
-  label3.textContent = 'Total Pages:';
-  label3.setAttribute('for', 'totalPages');
+  totalPages.setAttribute('min', '10');
+  totalPages.setAttribute('max', '1000');
   
   const readInfo = document.createElement('select');
   readInfo.className = 'readInfo';
@@ -113,7 +122,6 @@ newBook.addEventListener('click', function() {
 const form = document.querySelector(".bookForm");
 form.addEventListener("submit", (event) => {
   event.preventDefault(); // Prevent default form submission
-
   // Get the values from the form inputs
   const bookName = title.value;
   const bookAuthor = author.value;
@@ -189,5 +197,4 @@ function changeReadStatus(index, readInfoButton){
 function changeValue(index, newValue) {
     myLibrary[index].readInfo = newValue;
 }
-//Object.setPrototypeOf(Book, changeValue);
 displayBook();

@@ -18,3 +18,8 @@
     display: flex;
     flex-direction: column;
 }
+
+.title:invalid{
+    border: 2px solid red;
+    background: wheat;
+}
